@@ -49,3 +49,6 @@ for name, number in phone_book.items():
 
 ## Iteration ##
 
+## Remember ##
+Python's dict uses [] for insert and lookup. Use in to check existence.
+
