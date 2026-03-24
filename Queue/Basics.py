@@ -31,4 +31,14 @@ if you did deque("Task 1") (one argument), it would create a deque of characters
 Python's deque uses popleft() for efficient dequeue operations.
 
 
+## Peek
+
+## For a safe peek (avoid IndexError on empty deque):
+
+front_item = queue[0] if queue else None
+If you want to peek the back:
+
+back_item = queue[-1]
+
+
 
