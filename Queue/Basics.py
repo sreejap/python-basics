@@ -40,5 +40,7 @@ If you want to peek the back:
 
 back_item = queue[-1]
 
+## to get the length of the queue
+size = len(queue)
 
 
