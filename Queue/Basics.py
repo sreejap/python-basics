@@ -24,5 +24,11 @@ queue = deque((item,))
 So: [] isn’t required, it’s just a convenient way to provide an iterable—especially for the “single initial element” case.
 
 
+###
+queue = deque(["Task 1", "Task 2", "Task 3"]) ... so this is a queue which is created with an iterable list of 3 items
+if you did deque("Task 1") (one argument), it would create a deque of characters ('T', 'a', 's', ...), because a string is an iterable of characters.
+  
+Python's deque uses popleft() for efficient dequeue operations.
+
 
 
