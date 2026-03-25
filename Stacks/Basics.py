@@ -92,4 +92,8 @@ Quick rule
 If it’s something generic across many types: often a built-in (e.g., len, sorted, sum).
 If it’s something specific to that data structure: often a method (e.g., list.append, deque.popleft, dict.get).
 
+## Checking if a stack is empty is a common operation:
+
+Python: if stack: or len(stack) != 0  # check if stack is not empty
+
 
