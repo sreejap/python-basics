@@ -228,3 +228,14 @@ parts = []
 for i in range(1000):
     parts.append(str(i))
 result = "".join(parts)
+
+
+# isalnum - is alpanumeric
+
+# Quick comparison
+c = s[i]
+c.isalnum()        # normal / idiomatic
+str.isalnum(c)     # equivalent, less common
+isalnum(c)          # NameError (unless you defined isalnum yourself)
+
+
