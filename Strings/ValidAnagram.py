@@ -13,7 +13,7 @@ class Solution:
             mapping [c2] = mapping.get(c2,0)-1            
 
         for char in mapping: # is this how we iterate the keys
-            if mapping.get(char)!=0:
+            if mapping[char]!=0:
                 return False
         
         return True
