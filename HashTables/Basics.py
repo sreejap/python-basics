@@ -1,3 +1,7 @@
+# to update the frequencies
+      for c in s:
+            frequency_map[c] = frequency_map.get(c, 0) + 1
+          
 # Python's built-in hash function
 key = "Alice"
 hash_code = hash(key)
