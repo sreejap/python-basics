@@ -216,3 +216,168 @@ Prefix sum is not about arrays.
 It’s about this transformation:
 
 > **Turn a range problem into a lookup problem**
+
+Good — this distinction is **high-yield for interviews**. If you get this right, you’ll pick the correct pattern much faster.
+
+---
+
+# 🧠 Sliding Window vs Prefix Sum (Quick Intuition)
+
+## 🔵 Sliding Window = **expand / shrink window dynamically**
+
+👉 Best when:
+
+* Subarray is **contiguous**
+* You need **optimal length / count**
+* AND numbers are usually **non-negative**
+
+---
+
+## 🟢 Prefix Sum = **precompute + math trick**
+
+👉 Best when:
+
+* You need **exact sum = k**
+* Numbers can be **negative**
+* You’re counting **# of subarrays**
+
+---
+
+# ⚔️ Side-by-side comparison
+
+| Feature                        | Sliding Window | Prefix Sum                      |
+| ------------------------------ | -------------- | ------------------------------- |
+| Works with negatives?          | ❌ No           | ✅ Yes                           |
+| Finds exact sum = k?           | ❌ Usually no   | ✅ Yes                           |
+| Finds longest/shortest window? | ✅ Yes          | ⚠️ Sometimes                    |
+| Needs hashmap?                 | ❌              | ✅                               |
+| Core idea                      | Adjust window  | Use math: prefix[j] - prefix[i] |
+
+---
+
+# 🔥 Example 1 (Sliding Window wins)
+
+### Problem:
+
+> Longest subarray with sum ≤ k
+> nums = `[2,1,3,2]`, k = 5
+
+---
+
+### Why sliding window?
+
+* All numbers are **positive**
+* If sum gets too big → shrink window
+
+```python
+left = 0
+curr_sum = 0
+max_len = 0
+
+for right in range(len(nums)):
+    curr_sum += nums[right]
+    
+    while curr_sum > k:
+        curr_sum -= nums[left]
+        left += 1
+    
+    max_len = max(max_len, right - left + 1)
+```
+
+---
+
+## 🧠 Why this works
+
+Because:
+
+> Adding elements → sum increases
+> Removing elements → sum decreases
+
+👉 This only works with **non-negative numbers**
+
+---
+
+# 🔥 Example 2 (Prefix Sum wins)
+
+### Problem:
+
+> Count subarrays with sum = k
+> nums = `[1, -1, 1, 1]`, k = 2
+
+---
+
+### Why sliding window fails?
+
+Because:
+
+* Negative numbers break the logic
+* Sum can go up/down unpredictably
+
+---
+
+### Prefix sum solution:
+
+```python
+from collections import defaultdict
+
+prefix_sum = 0
+count = 0
+freq = defaultdict(int)
+freq[0] = 1
+
+for num in nums:
+    prefix_sum += num
+    
+    if prefix_sum - k in freq:
+        count += freq[prefix_sum - k]
+    
+    freq[prefix_sum] += 1
+```
+
+---
+
+## 🧠 Why this works
+
+We use:
+
+```text
+prefix[j] - prefix[i] = k
+```
+
+👉 Transform into lookup:
+
+```text
+prefix[i] = prefix[j] - k
+```
+
+---
+
+# 🚨 The decision rule (this is what you want to memorize)
+
+### ✅ Use Sliding Window if:
+
+* Array has **only positive numbers**
+* You need:
+
+  * longest / shortest subarray
+  * max/min window
+* Condition is **≤ k, ≥ k, at most k**
+
+---
+
+### ✅ Use Prefix Sum if:
+
+* You see:
+
+  * “sum == k”
+  * “number of subarrays”
+* OR array has **negative numbers**
+
+---
+
+# ⚡ One-liner summary
+
+> **Sliding Window = control the window**
+> **Prefix Sum = compute and lookup**
+
+
