@@ -4,7 +4,7 @@ Let’s make it click.
 
 ---
 
-# 🧠 Core idea (don’t skip this)
+# 🧠 Core idea 
 
 > **Prefix sum = cumulative sum up to an index**
 
