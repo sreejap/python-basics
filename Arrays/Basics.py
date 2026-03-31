@@ -75,3 +75,21 @@ def insert_at_position(arr: list[int], index: int, value: int) -> list[int]:
 # Python list (dynamic array)
 arr = []          # size=0, initial capacity varies
 arr.append(1)     # size=1
+
+
+# shallow copy
+arr[:] returns a shallow copy of the list.
+
+arr = [1, 2, 3]
+copy = arr[:]
+
+copy is arr        # False (different objects)
+copy == arr        # True (same contents)
+
+# If your list contains mutable objects (like other lists), those inner objects are not copied, just referenced:
+arr = [[1, 2], [3, 4]]
+copy = arr[:]
+
+copy[0][0] = 99
+
+print(arr)  # [[99, 2], [3, 4]] ← original is affected
