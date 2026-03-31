@@ -15,6 +15,6 @@ print(original)  # [42, 17, 83, 29, 56, 73] (unchanged)
 import bisect
 
 sorted_list = [17, 29, 42, 56, 73, 83]
-index = bisect.bisect_left(sorted_list, 73)
+index = bisect.bisect_left(sorted_list, 73) # It only finds the position (index) where an element should go assuming the list is already sorted. it won't modify the list
 if index < len(sorted_list) and sorted_list[index] == 73:
     print(f"Found at index {index}")  # Found at index 4
